@@ -101,6 +101,26 @@ The df utility displays statistics about the amount of free disk space on the sp
 
 ```
 
+> >手动挂载U盘
+>
+> 某些系统在U插入后，会显示其磁盘信息，但并未将磁盘（U盘）挂载（mount）到文件系统，需要手动挂载。
+>
+> ```bash
+> # 假如我们的优盘是fat32格式的
+> 输入指令：mount -t vfat /dev/sdb1 /media
+> 
+> # 如果是NTFS格式的话
+> 输入指令：mount -t nfs /dev/sdb1 /media
+> 
+> 
+> # 当需要退出U盘时，还要手动撤销挂载
+> 输入指令：umount /media 
+> ```
+>
+> 
+
+
+
 ***parted***
 
 ```bash
@@ -117,11 +137,13 @@ parted命令是由GNU组织开发的一款功能强大的磁盘分区和分区�
 nat
 hostonly
 
+> ## centos7上网设置
 
+**重点设置BOOTPROTO=dhcp，ONBOOT=yes**
 
 ***修改网卡地址***
 
-`cd /etc/sysconfig/network-scripts/` 
+`cd /etc/sysconfig/network-scripts/`  
 
 ***需要在配置文件里开启虚拟机网卡***
 
@@ -767,7 +789,7 @@ rpm -ihv <package name>
 查询
 
 ```bash
-rpm -q <package name> # 查询是否安装某包
+rpm -q <package name> # 查询是否安装某包,以及安装位置
 rpm -qa <package name> # 显示所有的包
 ```
 
