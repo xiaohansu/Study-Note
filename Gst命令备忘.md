@@ -54,13 +54,13 @@ gst-launch-1.0 -v videotestsrc ! queue  ! x264enc ! flvmux !  rtmpsink location=
 
 ```bash
 # tcp
-docker run --rm -it -p 8554:8554/tcp dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
+docker run --rm -it --network host -p 8554:8554/tcp dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
 
 # udp
-docker run --rm -it -p 8554:8554/udp dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
+docker run --rm -it  --network host -p 8554:8554/udp dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
 
 # 
-docker run --rm -it -p 8554:8554 dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
+docker run --rm -it --network host -p 8554:8554 dyhexl/gst-rtsp-server:v1.16 ./test-launch "( videotestsrc is-live=true ! video/x-raw, width=1280, height=720, framerate=24/1 ! x264enc bitrate=4096 tune=zerolatency ! video/x-h264, profile=constrained-baseline ! rtph264pay name=pay0 pt=96 )"
 
 ####
 # 端口绑定时指定传输协议tcp/udp，但是
