@@ -154,7 +154,9 @@ Most of the commands below are mainly tested on Mac OS X
 ```
 gst-launch-1.0 videotestsrc ! osxvideosink
 ```
-
+```
+gst-launch-1.0 -v videotestsrc ! glimagesink 
+```
 ```
 gst-launch-1.0 playbin uri=file:///<filepath>
 ```
