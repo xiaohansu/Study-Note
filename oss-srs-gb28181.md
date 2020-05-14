@@ -3,6 +3,8 @@
 
 https://mp.weixin.qq.com/s/VIPSPaBB5suUk7_I2oOkMw
 
+MAC 环境下无法执行
+
 ## 配置摄像头，打开平台对接功能
 设置数值，打开服务
 
