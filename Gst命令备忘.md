@@ -15,8 +15,15 @@ sudo apt-get install gstreamer-plugins-*
 文档有官方例子
 
 
+## pipeline\bin 可视化工具
+```bash
+https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html?gi-language=c#getting-pipeline-graphs
 
+https://dreampuf.github.io/GraphvizOnline
 
+#  设置环境变量： GST_DEBUG_DUMP_DOT_DIR ： 视图文件存放目录
+
+```
 
 
 
@@ -33,6 +40,10 @@ sudo apt-get install gstreamer-plugins-*
 ******
 
 
+### fpsdisplaysink
+```bash
+gst-launch-1.0 rtspsrc location=rtsp://x.x.x.x:xxx/xxx ! decodebin ! fpsdisplaysink
+```
 
 ### rtmpsrc保存到本地
 
@@ -40,7 +51,7 @@ sudo apt-get install gstreamer-plugins-*
 gst-launch-1.0 rtmpsrc location=rtmp://192.168.6.220:1935/stream/123  ! "video/x-h264, stream-format=byte-stream" ! filesink location=/Users/suxiaohan/Desktop/Pic/test.flv
 ```
 
-###rtmpsink
+### rtmpsink
 
 ```bash
 gst-launch-1.0 -v videotestsrc ! queue  ! x264enc ! flvmux !  rtmpsink location='rtmp://127.0.0.1/stream/123 live=1' 
