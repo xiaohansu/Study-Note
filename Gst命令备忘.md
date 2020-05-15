@@ -110,10 +110,13 @@ gst-launch-1.0 rtspsrc location= rtsp://192.168.6.136:8554/test \
 
 
 
-* 创建一个rtmp server
+* 使用docker创建一个rtmp server
 
 ```bash
-docker dd
+docker pull alfg/nginx-rtmp
+
+docker run -it -p 1935:1935 -p 8080:80 --rm alfg/nginx-rtmp
+
 ```
 
 
