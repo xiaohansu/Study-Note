@@ -56,7 +56,18 @@ gst-launch-1.0 rtmpsrc location=rtmp://192.168.6.220:1935/stream/123  ! "video/x
 ```bash
 gst-launch-1.0 -v videotestsrc ! queue  ! x264enc ! flvmux !  rtmpsink location='rtmp://127.0.0.1/stream/123 live=1' 
 ```
+### shm 的使用
+```bash
+ gst-launch-1.0 -v videotestsrc is-live=true! "video/x-raw, format=YUY2, color-matrix=sdtv, \
+ chroma-site=mpeg2, width=(int)320, height=(int)240, framerate=(fraction)30/1" \
+ ! shmsink socket-path=/tmp/blah shm-size=2000000
+ gst-launch-1.0 funnel name=f shmsrc socket-path=/tmp/foo !  watchdog timeout=10000 ! f. appsrc ! watchdog timeout=3600000 ! f. f. ! h264parse disable-passthrough=true ! matroskamux ! watchdog timeout=300000 ! filesink location=test.mk
 
+ 
+ ## is-live=true 必须
+ 
+ 
+```
 
 
 ### rtsp server
