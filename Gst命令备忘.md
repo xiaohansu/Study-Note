@@ -62,7 +62,7 @@ gst-launch-1.0 -v videotestsrc is-live=true ! x264enc key-int-max=10 ! shmsink s
 
  
  
- gst-launch-1.0 funnel name=f shmsrc socket-path=/tmp/foo !  watchdog timeout=10000 ! f. appsrc ! watchdog timeout=3600000 ! f. f. ! h264parse disable-passthrough=true ! matroskamux ! watchdog timeout=300000 ! filesink location=test.mk
+ gst-launch-1.0 funnel name=f shmsrc socket-path=/tmp/foo !  watchdog timeout=10000 ! f. appsrc ! watchdog timeout=3600000 ! f. f. ! h264parse disable-passthrough=true ! matroskamux ! watchdog timeout=300000 ! filesink location=test.mk ## Invalid buffer timestamp; dropping buffer 会失败，未解决
 
  gst-launch-1.0 funnel name=f shmsrc socket-path=/tmp/foo !  watchdog timeout=10000 ! f. appsrc ! watchdog timeout=3600000 ! f. f. ! h264parse disable-passthrough=true ! flvmux ! watchdog timeout=300000 ! filesink location=test.flv
  
