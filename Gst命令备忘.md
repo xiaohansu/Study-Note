@@ -68,6 +68,7 @@ gst-launch-1.0 -v videotestsrc is-live=true ! x264enc key-int-max=10 ! shmsink s
  
  ## is-live=true 必须
  
+ gst-launch-1.0 -v /tmp/foo ! h264parse disable-passthrough=true ! flvmux streamable=true ! watchdog timeout=10000 ! rtmpsink max-lateness=1000000000 location="rtmp://192.168.6.122:1935/stream/test live=1 timeout=1"
  
 ```
 
